@@ -6,10 +6,14 @@
 trigger:
 - master
 
+variables:
+- group: pipeline-variables
+
 pool:
   vmImage: 'Ubuntu-16.04'
 
 steps:
+
 - script: echo Hello, Azure!
   displayName: 'Run a one-line script'
 
@@ -17,3 +21,8 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+
+- script: |
+    echo "kronka: " $(spam)
+    echo "kronka: " $(kronka)
+  displayName: 'Access variables'
