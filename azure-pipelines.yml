@@ -29,8 +29,8 @@ steps:
 
 - script: |
     pwd
-    # git config --global user.email "cdeil-azure-pipelines@dummy.com"
-    # git config --global user.name "cdeil-azure-pipelines"
+    git config --global user.email "cdeil-azure-pipelines@dummy.com"
+    git config --global user.name "cdeil-azure-pipelines"
     git checkout -b spam
     echo `date` > date.txt
     git add date.txt
