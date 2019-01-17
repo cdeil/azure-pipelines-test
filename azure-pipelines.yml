@@ -29,9 +29,11 @@ steps:
 
 - script: |
     pwd
+    git config --global user.email "cdeil-azure-pipelines@dummy.com"
+    git config --global user.name "cdeil-azure-pipelines"
     git checkout -b spam
     echo `date` > date.txt
-    git commit date.txt
+    git add date.txt
     git commit -am "update date.txt"
     echo "GithubPAT: " $(GithubPAT)
     git push https://$(GithubPAT)@github.com/cdeil/azure-pipelines-test.git spam
