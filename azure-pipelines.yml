@@ -37,7 +37,6 @@ steps:
     echo `date` > date.txt
     git add date.txt
     git commit -m 'Autocommit from $(Build.DefinitionName) $(Build.BuildNumber)'
-    git push https://$(github.username):$(github.token)@github.com/cdeil/azure-pipelines-test.git spam
     git push origin
   displayName: 'Make a commit and push to github'
   condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
