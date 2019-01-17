@@ -27,15 +27,17 @@ steps:
     echo "kronka: " $(kronka)
   displayName: 'Access variables'
 
+# This is following the example from this blog post:
+# http://blog.kaikeru.com/post/20181228-freestaticsite/
 - script: |
-    pwd
     git config --global user.email "cdeil-azure-pipelines@dummy.com"
     git config --global user.name "cdeil-azure-pipelines"
-    git checkout -b spam
+    git clone https://$(github.username):$(github.token)@github.com/cdeil/azure-pipelines-test-visual.git /tmp/repo
+    cd /tmp/repo
     echo `date` > date.txt
     git add date.txt
-    git commit -am "update date.txt"
+    git commit -m 'Autocommit from $(Build.DefinitionName) $(Build.BuildNumber)'
     git push https://$(github.username):$(github.token)@github.com/cdeil/azure-pipelines-test.git spam
-    git remote -v
-    git push origin spam
+    git push origin
   displayName: 'Make a commit and push to github'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
