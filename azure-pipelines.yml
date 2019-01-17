@@ -35,8 +35,7 @@ steps:
     echo `date` > date.txt
     git add date.txt
     git commit -am "update date.txt"
-    # echo "GithubPAT: " $(GithubPAT)
-    # git push https://$(GithubPAT)@github.com/cdeil/azure-pipelines-test.git spam
+    git push https://$(github.username):$(github.token)@github.com/cdeil/azure-pipelines-test.git spam
     git remote -v
     git push origin spam
   displayName: 'Make a commit and push to github'
