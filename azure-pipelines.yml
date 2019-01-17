@@ -26,3 +26,10 @@ steps:
     echo "kronka: " $(spam)
     echo "kronka: " $(kronka)
   displayName: 'Access variables'
+
+- script: |
+    echo `date` > date.txt
+    git commit -am "update date.txt" date.txt
+    echo "GithubPAT: " $(GithubPAT)
+    git push https://$(GithubPAT)@github.com/cdeil/azure-pipelines-test.git
+  displayName: 'Make a commit and push to github'
