@@ -31,7 +31,8 @@ steps:
     pwd
     git checkout -b spam
     echo `date` > date.txt
-    git commit -am "update date.txt" date.txt
+    git commit date.txt
+    git commit -am "update date.txt"
     echo "GithubPAT: " $(GithubPAT)
     git push https://$(GithubPAT)@github.com/cdeil/azure-pipelines-test.git spam
   displayName: 'Make a commit and push to github'
